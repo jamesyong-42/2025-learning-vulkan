@@ -1,9 +1,9 @@
 #pragma once
 
 #include "renderer/Window.hpp"
-#include "renderer/Pipeline.hpp"
 #include "renderer/Device.hpp"
-#include "renderer/SwapChain.hpp"
+#include "renderer/Renderer.hpp"
+#include "renderer/SimpleRenderSystem.hpp"
 #include "game/GameObject.hpp"
 //std
 #include <memory>
@@ -23,20 +23,11 @@ namespace vge {
 
     private:
         void loadGameObjects();
-        void createPipelineLayout();
-        void createPipeline();
-        void createCommandBuffers();
-        void freeCommandBuffers();
-        void drawFrame();
-        void recreateSwapChain();
-        void recordCommandBuffer(int imageIndex);
-        void renderGameObjects(VkCommandBuffer commandBuffer);
 
         Window window{WIDTH, HEIGHT, "Demo"};
         Device device{window};
-        std::unique_ptr<SwapChain> swapChain;
-        std::unique_ptr<Pipeline> pipeline;
-        VkPipelineLayout pipelineLayout;
+        Renderer renderer{window, device};
+
         std::vector<VkCommandBuffer> commandBuffers;
         std::vector<GameObject> gameObjects;
     };
