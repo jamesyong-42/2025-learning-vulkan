@@ -23,7 +23,8 @@ add_executable(virtual_geometry_engine src/main.cpp
         src/renderer/Pipeline.cpp
         src/renderer/Device.cpp
         src/renderer/SwapChain.cpp
-        src/renderer/Model.cpp)
+        src/renderer/Model.cpp
+        src/game/GameObject.cpp)
 
 # Include directories
 target_include_directories(virtual_geometry_engine PRIVATE src)
