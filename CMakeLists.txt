@@ -26,7 +26,8 @@ add_executable(virtual_geometry_engine src/main.cpp
         src/renderer/Model.cpp
         src/game/GameObject.cpp
         src/renderer/Renderer.cpp
-        src/renderer/SimpleRenderSystem.cpp)
+        src/renderer/SimpleRenderSystem.cpp
+        src/renderer/Camera.cpp)
 
 # Include directories
 target_include_directories(virtual_geometry_engine PRIVATE src)

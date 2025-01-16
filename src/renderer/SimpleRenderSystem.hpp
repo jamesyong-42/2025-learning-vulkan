@@ -2,6 +2,7 @@
 
 #include "renderer/Pipeline.hpp"
 #include "renderer/Device.hpp"
+#include "renderer/Camera.hpp"
 #include "game/GameObject.hpp"
 //std
 #include <memory>
@@ -14,7 +15,7 @@ namespace vge {
         SimpleRenderSystem(const SimpleRenderSystem&) = delete;
         SimpleRenderSystem& operator=(const SimpleRenderSystem&) = delete;
 
-        void renderGameObjects(VkCommandBuffer commandBuffer, std::vector<GameObject> &gameObjects);
+        void renderGameObjects(VkCommandBuffer commandBuffer, std::vector<GameObject> &gameObjects, const Camera &camera);
 
     private:
         void createPipelineLayout();
