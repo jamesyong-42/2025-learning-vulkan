@@ -32,6 +32,7 @@ add_executable(virtual_geometry_engine src/main.cpp
 
 # Include directories
 target_include_directories(virtual_geometry_engine PRIVATE src)
+target_include_directories(virtual_geometry_engine SYSTEM PRIVATE ${CMAKE_SOURCE_DIR}/lib)
 
 # Link Vulkan
 target_link_libraries(virtual_geometry_engine Vulkan::Vulkan)
@@ -47,6 +48,9 @@ file(GLOB SHADER_FILES "${CMAKE_SOURCE_DIR}/src/shaders/*.vert" "${CMAKE_SOURCE_
 
 # Set the output directory for SPIR-V files
 set(SPIRV_OUTPUT_DIR "${CMAKE_BINARY_DIR}/shaders")
+
+# Set models path
+set(MODELS_DIR "${CMAKE_SOURCE_DIR}/models")
 
 # Ensure the output directory exists
 file(MAKE_DIRECTORY ${SPIRV_OUTPUT_DIR})
@@ -75,4 +79,11 @@ add_custom_command(
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${SPIRV_OUTPUT_DIR}
         ${CMAKE_BINARY_DIR}/shaders
+)
+# copy models
+add_custom_command(
+        TARGET virtual_geometry_engine POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${MODELS_DIR}
+        ${CMAKE_BINARY_DIR}/models
 )
