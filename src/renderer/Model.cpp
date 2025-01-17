@@ -169,9 +169,11 @@ namespace vge {
     }
 
     std::vector<VkVertexInputAttributeDescription> Model::Vertex::getAttributeDescriptions() {
-        return {
-            {0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, position)},
-            {1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color)},
-        };
+        std::vector<VkVertexInputAttributeDescription> attributeDescriptions{};
+        attributeDescriptions.push_back({0, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, position)});
+        attributeDescriptions.push_back({1, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color)});
+        attributeDescriptions.push_back({2, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, normal)});
+        attributeDescriptions.push_back({3, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(Vertex, uv)});
+        return attributeDescriptions;
     }
 }

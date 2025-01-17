@@ -60,11 +60,11 @@ namespace vge {
     }
 
     void Demo::loadGameObjects() {
-        std::shared_ptr<Model> model = Model::createModelFromFile(device, "models/smooth_vase.obj");
+        std::shared_ptr<Model> model = Model::createModelFromFile(device, "models/flat_vase.obj");
         auto gameObject = GameObject::createGameObject();
         gameObject.model = model;
         gameObject.transform.translation = {0.f, 0.f, 2.5f};
-        gameObject.transform.scale = {.5f, .5f, .5f};
+        gameObject.transform.scale = {.5f, .25f, .5f};
         gameObjects.push_back(std::move(gameObject));
     }
 }
